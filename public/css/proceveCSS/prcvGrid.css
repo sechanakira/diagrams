@@ -1,0 +1,102 @@
+/* Grid root container */ 
+.prcv-Grid {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Crud component container */
+.prcv-GridCrud {
+    padding-bottom: 1em;
+}
+
+/* Table container */
+div.prcv-GridTable {
+    overflow: auto;
+}
+
+/* Table settings */
+table.prcv-GridTable {
+    table-layout: fixed;
+}
+
+thead.prcv-GridTable {
+    position: sticky;
+    top: 0;
+}
+
+/* Header settings */
+.prcv-GridHeader {
+    background-color: #dfeaf5;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.prcv-GridCheckboxHeader {
+    width: 30px;
+}
+
+div.prcv-GridHeaderLabel {
+    overflow: hidden;
+}
+
+label.prcv-GridHeaderLabel {
+    pointer-events:none;
+}
+
+i.prcv-GridHeaderLabel {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.prcv-GridHeaderResize {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+}
+
+.prcv-GridHeaderMove {
+    background-color: #dfeaf5;
+    pointer-events:none;
+    position:fixed;
+    opacity: 60%;
+    border:1px solid;
+}
+
+/* Cell settings */
+.prcv-GridCell {
+    overflow: hidden;
+}
+
+/* Empty table */
+.prcv-NoData {
+    text-align:center;
+}
+
+.prcv-SelectorDialog .modal-container {
+    max-width: 960px;
+}
+
+.modal div.prcv-Grid {
+    height:600px
+}
+
+tr.prcv-GridDragTop {
+    box-shadow: 0 5px 0 red inset;
+}
+
+tr.prcv-GridDragBottom {
+    box-shadow: 0px -5px 0 red inset;
+}
+
+td.prcv-GridDragFull {
+    background-color: pink;
+}
