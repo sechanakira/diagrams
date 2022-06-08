@@ -1,12 +1,13 @@
 <script>
     import {onMount} from "svelte";
     import {
-        Diagram, SymbolPalette, UndoRedo
+        Diagram, SymbolPalette, UndoRedo, BpmnDiagrams
     } from '@syncfusion/ej2-diagrams';
     import {addEvents} from '../scripts/diagram-common.js';
 
     onMount(() => {
         Diagram.Inject(UndoRedo);
+        Diagram.Inject(BpmnDiagrams);
 
         //Create and add ports for node.
         function getPorts() {
@@ -63,6 +64,16 @@
         function getFlowShape(id, shapeType) {
             const flowshape = {id: id, shape: {type: 'Flow', shape: shapeType}};
             return flowshape;
+        }
+
+        function getBasicShape(id, shapeType) {
+            const basicShape = {id: id, shape: {type: 'Basic', shape: shapeType}};
+            return basicShape;
+        }
+
+        function getBPMNShape(id, shapeType) {
+            const basicShape = {id: id, shape: {type: 'Bpmn', shape: shapeType}};
+            return basicShape;
         }
 
         function getSymbolDefaults(symbol) {
@@ -135,7 +146,7 @@
                 offsetY: 530,
                 shape: {type: 'Flow', shape: 'DirectData'},
                 annotations: [{content: 'Customer Database', margin: {left: 25, right: 25}}]
-            }
+            },
         ];
 
 //Initializes the connector for the diagram
@@ -213,6 +224,95 @@
             getFlowShape('Delay', 'Delay'),
         ];
 
+        const basicShapes = [
+            getBasicShape('Rectangle', 'Rectangle'),
+            getBasicShape('Ellipse', 'Ellipse'),
+            getBasicShape('Triangle', 'Triangle'),
+            getBasicShape('Plus', 'Plus'),
+            getBasicShape('Star', 'Star'),
+            getBasicShape('Pentagon', 'Pentagon'),
+            getBasicShape('Heptagon', 'Heptagon'),
+            getBasicShape('Octagon', 'Octagon'),
+            getBasicShape('Trapezoid', 'Trapezoid'),
+            getBasicShape('Decagon', 'Decagon'),
+            getBasicShape('RightTriangle', 'RightTriangle'),
+            getBasicShape('Parallelogram', 'Parallelogram'),
+        ];
+
+        const bpmnShapes = [
+            {
+                id: 'Start Event',
+                shape: {type: 'Bpmn', shape: 'Event', event: {event: 'Start', trigger: 'None'}},
+                annotations: [
+                    {content: 'Start Event'}
+                ]
+            },
+            {
+                id: 'Intermediate Event',
+                shape: {type: 'Bpmn', shape: 'Event', event: {event: 'Intermediate', trigger: 'None'}},
+                annotations: [
+                    {content: 'Intermediate Event'}
+                ]
+            },
+            {
+                id: 'End Event',
+                shape: {type: 'Bpmn', shape: 'Event', event: {event: 'End', trigger: 'None'}},
+                annotations: [
+                    {content: 'End Event'}
+                ]
+            },
+            {
+                id: 'Gateway',
+                shape: {type: 'Bpmn', shape: 'Gateway'},
+                annotations: [
+                    {content: 'Gateway'}
+                ]
+            },
+            {
+                id: 'Task',
+                shape: {type: 'Bpmn', shape: 'Activity', activity: {activity: 'Task'}},
+                annotations: [
+                    {content: 'Task'}
+                ]
+            },
+            {
+                id: 'Transaction',
+                shape: {
+                    type: 'Bpmn', shape: 'Activity', activity: {
+                        activity: 'SubProcess',
+                        subProcess: {
+                            type: 'Transaction', transaction: {
+                                success: {visible: false}, failure: {visible: false}, cancel: {visible: false}
+                            }
+                        }
+                    },
+                },
+                annotations: [
+                    {content: 'Transaction'}
+                ]
+            },
+            {
+                id: 'Message',
+                shape: {type: 'Bpmn', shape: 'Message'}, annotations: [{content: 'Message'}]
+            },
+            {
+                id: 'DataObject',
+                shape: {type: 'Bpmn', shape: 'DataObject'}, annotations: [{content: 'Data Object'}]
+            },
+            {
+                id: 'DataSource',
+                shape: {type: 'Bpmn', shape: 'DataSource'}, annotations: [{content: 'Data Source'}]
+            },
+            {
+                id: 'Group',
+                shape: {type: 'Bpmn', shape: 'Group'}, annotations: [{content: 'Group'}]
+            },
+            {
+                id: 'Text Annotation',
+                shape: {type: 'Bpmn', shape: 'TextAnnotation'}, annotations: [{content: 'Text Annotation'}]
+            }
+        ];
+
 //Initializes connector symbols for the symbol palette
         const connectorSymbols = [
             {
@@ -240,6 +340,20 @@
         ];
 
         const palettes = [
+            {
+                id: 'bpmnShapes',
+                expanded: true,
+                symbols: bpmnShapes,
+                iconCss: 'e-ddb-icons e-bpmn sans-serif',
+                title: 'BPMN Shapes'
+            },
+            {
+                id: 'basicShapes',
+                expanded: true,
+                symbols: basicShapes,
+                iconCss: 'e-ddb-icons e-basic',
+                title: 'Basic Shapes'
+            },
             {id: 'flow', expanded: true, symbols: flowShapes, iconCss: 'e-ddb-icons e-flow', title: 'Flow Shapes'},
             {
                 id: 'connectors',
