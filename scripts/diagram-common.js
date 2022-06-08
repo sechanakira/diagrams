@@ -1,7 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", {value: true});
 exports.openPalette = exports.addEvents = void 0;
-var isMobile;
+let isMobile;
+
 function addEvents() {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
@@ -11,17 +12,19 @@ function addEvents() {
         }
     }
 }
+
 exports.addEvents = addEvents;
+
 function openPalette() {
-    var paletteSpace = document.getElementById('palette-space');
+    const paletteSpace = document.getElementById('palette-space');
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
         if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {
             paletteSpace.classList.add('sb-mobile-palette-open');
-        }
-        else {
+        } else {
             paletteSpace.classList.remove('sb-mobile-palette-open');
         }
     }
 }
+
 exports.openPalette = openPalette;
