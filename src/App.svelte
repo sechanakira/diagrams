@@ -1,13 +1,13 @@
 <script>
     import {onMount} from "svelte";
     import {
-        Diagram, SymbolPalette, UndoRedo, BpmnDiagrams
+        Diagram, SymbolPalette, UndoRedo, BpmnDiagrams, DiagramContextMenu
     } from '@syncfusion/ej2-diagrams';
     import {addEvents} from '../scripts/diagram-common.js';
 
     onMount(() => {
-        Diagram.Inject(UndoRedo);
-        Diagram.Inject(BpmnDiagrams);
+        Diagram.Inject(BpmnDiagrams, UndoRedo, DiagramContextMenu);
+        SymbolPalette.Inject(BpmnDiagrams);
 
         //Create and add ports for node.
         function getPorts() {
