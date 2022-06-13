@@ -3,9 +3,13 @@
     import {
         Diagram, SymbolPalette, UndoRedo, BpmnDiagrams, DiagramContextMenu
     } from '@syncfusion/ej2-diagrams';
+    import {registerLicense} from '@syncfusion/ej2-base';
     import {addEvents} from '../scripts/diagram-common.js';
 
     onMount(() => {
+        const licenseKey = 'ORg4AjUWIQA/Gnt2VVhhQlFaclhJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRdkBiUX9bc3xQQ2NfVUw=';
+        registerLicense(licenseKey);
+
         Diagram.Inject(BpmnDiagrams, UndoRedo, DiagramContextMenu);
         SymbolPalette.Inject(BpmnDiagrams);
 
