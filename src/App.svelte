@@ -425,6 +425,17 @@
             },
         ]
 
+        const activities = [
+            {
+                id: 'Task', width:100,height:100,offsetX:200, offsetY:200,
+                shape: {
+                    type: 'Path',
+                    data: 'm3.9882812 1034.5352c-1.8058997 0-3.27539058 1.4694-3.27539058 3.2753v8.961c0 1.8059 1.46949088 3.2754 3.27539058 3.2754h12.0468748c1.8059 0 3.275391-1.4695 3.275391-3.2754v-8.961c0-1.8059-1.469491-3.2753-3.275391-3.2753zm0 1.0332h12.0468748c1.251185 0 2.242188.991 2.242188 2.2421v8.961c0 1.2512-.991003 2.2422-2.242188 2.2422h-12.0468748c-1.2511848 0-2.2421874-.991-2.2421874-2.2422v-8.961c0-1.2511.9910026-2.2421 2.2421874-2.2421z'
+                },
+                style: {fill:'black'}
+            },
+        ]
+
         const flowIcons = [
             {
                 id: 'Sequence Flow', width:100,height:100,offsetX:200, offsetY:200,
@@ -506,6 +517,13 @@
                 symbols: taskTypes,
                 iconCss: 'e-ddb-icons e-bpmn sans-serif',
                 title: 'Task Types'
+            },
+            {
+                id: 'activities',
+                expanded: true,
+                symbols: activities,
+                iconCss: 'e-ddb-icons e-bpmn sans-serif',
+                title: 'Activities'
             },
             {
                 id: 'basicShapes',
